@@ -21,22 +21,26 @@
         const MyComponent = {
             template: `
                 <button @click="click">
-                {{ state.message }}
+                {{ state1.message }} {{state2.message}}
                 </button>
             `,
             setup() {
-                const state = reactive({
-                    message:'Hello Vue 3!!'
+                const state1 = reactive({
+                    message:'Hello Vue 3!!',
+                    key1: 'key1',
+                    key2: "key2"
+                })
+                const state2 = reactive({
+                    message:'Hello Vue 2!!',
+                    key1: 'key3',
+                    key2: "key4"
                 })
                 effect(() => {
-                    console.log('state change ', state.message)
+                    console.log('state change ')
                 })
-                function click() {
-                    state.message = state.message.split('').reverse().join('')
-                }
                 return {
-                    state,
-                    click
+                    state1,
+                    state2
                 }
             }
         }
